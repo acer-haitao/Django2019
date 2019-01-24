@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block banner %}
+<!-- Banner starts here -->
+<div class="banner">
+    <div class="container">
+        <div class="slider-background">
+            <section class="slider">
+                <div class="flexslider">
+                    <ul class="slides">
+                        {% if img %}
+                        {% for li_img in img %}
+                        <li>
+                            <img src="{{MEDIA_URL}}{{li_img.img}}" alt="{{li_img.addtime}}"/>
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+            </section>
+            <div class="banner-below-content">
+                {% for txt in img_txt%}
+                <h2>{{txt.txt1}}</h2>
+                <p>{{txt.txt2}}</p>
+                <a href="{{txt.url}}"><i>{{txt.txt3}}</i></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner ends here -->
+{% endblock %}
+
+{% block content %}
+<!-- Contents start here -->
+<div class="content">
+    <div class="container">
+        <div class="row content-row-class">
+            {% for ct in content %}
+            <div class="col-md-3 content-row-column">
+                <div class="content-row-column-in">
+                    <center><i class="{{ct.icon}}"> </i></center>
+                    <a href="{{ct.url1}}" class="hed"><h3>{{ct.url1_txt}}</h3></a>
+                    <p>{{ct.content}}</p>
+                    <a href="{{ct.more_url}}">{{ct.more_txt}}</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="content-row-class2">
+            <h3> Sed ut perspiciatis olup iont tat</h3>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praese</p>
+        </div>
+        <div class="row content-row-class3">
+            {% for ps in person %}
+            <div class="col-md-6 content-class3-column">
+
+                <div class="row class3-row">
+                    <div class="col-md-6 class3-row-column">
+                        <img src="{{MEDIA_URL}}{{ps.img}}"/>
+                    </div>
+                    <div class="col-md-6 class3-row-column">
+                        <h3>{{ps.title}}</h3>
+                        <p>{{ps.txt}}</p>
+                        <a href="{{ps.more_url}}">{{ps.more_txt}}</a>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+        <div class="testimonals">
+            <h3>testimonials of our clients</h3>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praese</p>
+        </div>
+		
+		<div class="container">
+            {% for net in netnew %}
+        <div class="content-top">
+
+            <div class="col-md-4 testimonals-row-column">
+                <div class="testimonals-details">
+                    <p class="test"></p>
+                    <p>{{net.txt}}</p>
+                </div>
+                <p><span><a href="#">- {{net.author}}</a></span> / {{net.liked}} /{{net.create_time}} </p>
+            </div>
+
+
+        </div>
+
+            {% endfor %}
+
+		<div class="clearfix"></div>
+		</div>
+
+    </div>
+</div>
+<!-- Contents ends here -->
+{% endblock %}

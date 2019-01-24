@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}梦想的雨季 {% endblock %}</title>
+    <!-- Bootstrap link -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <!-- Bootstrap link  end-->
+    <!-- CSS stylesheet -->
+    {% block custom_css %}{% endblock %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="all"/>
+    <!-- CSS stylesheet end-->
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+
+    <!-- Google fonts ends -->
+    {% block custom_js %}{% endblock %}
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- FlexSlider -->
+    <!--<script defer src="{% static 'js/jquery.min.js' %}"></script>-->
+    <script defer src="{% static 'js/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script type="text/javascript">
+        $(function () {
+            SyntaxHighlighter.all();
+        });
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function (slider) {
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<!-- Header starts here -->
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html"><img src="{% static 'images/logo.png' %}" height="53" width="184"/></a>
+        </div>
+        <div class="menu">
+            <a class="toggleMenu" href="#"><img src="{% static 'images/nav_icon.png' %}" alt=""/> </a>
+            <ul class="nav" id="nav">
+                {% for test in title%}
+                <li><a href="{{ test.url }}" class="scroll" target="{{test.class_blank}}">{{test.title}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Header ends here -->
+
+{% block banner %}
+{% endblock %}
+
+
+{% block content %}
+{% endblock %}
+
+<!-- Footer starts here-->
+<div class="footer">
+    <div class="container">
+        <div class="row footer-row">
+            <div class="col-md-3 footer-row-left">
+                <div class="social-media">
+                    <a href="#"><i class="fa1"> </i></a>
+                    <a href="#"><i class="fa2"> </i></a>
+                    <a href="#"><i class="fa3"> </i></a>
+                    <a href="#"><i class="fa4"> </i></a>
+                    <a href="#"><i class="fa5"> </i></a>
+                </div>
+            </div>
+            <div class="col-md-3 footer-row-left">
+                <div class="email-info">
+                    <input type="text" size="25px" value="info@companyname.com" onfocus="this.value = '';"
+                           onblur="if (this.value == '') {this.value = 'info@companyname.com';}"
+                           style="margin-left: 10px">
+                </div>
+            </div>
+            <div class="col-md-6 footer-row-left">
+                <div class="footer-menu">
+                    <ul>
+                        {% for test in title%}
+                        <li><a href="{{ test.url }}" class="scroll">{{test.title}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <p class="footer-row-para">Copyright &copy; 2019.Company name All rights reserved.<a target="_blank"	href="http://daydayup11.cn/">梦想的雨季--统计访问量总数:{{visit_count}}</a>
+        </p>
+    </div>
+</div>
+<!-- Footer ends here-->
+
+</body>
+</html>

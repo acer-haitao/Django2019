@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<script type="application/x-javascript"> addEventListener("load", function () {
+    setTimeout(hideURLbar, 0);
+}, false);
+function hideURLbar() {
+    window.scrollTo(0, 1);
+} </script>
+{% block content %}
+<!-- Contents start here -->
+<!-- Portfolio starts here -->
+<div class="portfolio-start">
+    <div class="container">
+         {% for div in div_img %}
+        <div class="content-top">
+            <div class="col_1_of_projects span_1_of_projects">
+                <a href="{{div.div_url}}">
+                    <div class="view view-fourth">
+                        <img src="{{MEDIA_URL}}{{div.img}}" class="img-responsive"/>
+                        <div class="mask">
+                            <h2>{{div.h2_title}}</h2>
+                            <p>{{div.p_txt}}</p>
+                            <a href="{{div.readmore_url}}" class="info">{{div.readmore}}</a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- Aboutus ends here -->
+<!-- Contents ends here -->
+{% endblock %}
